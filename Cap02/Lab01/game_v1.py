@@ -1,9 +1,10 @@
 # Game Ping-Pong
 
+# Importação de pacotes adicionais
 from tkinter import *
 import random
 import time
-
+# variável que pergunta os níveis de dificuldade do jogo
 level = int(input("Qual nível você gostaria de jogar? 1/2/3/4/5 \n"))
 length = 500/level
 
@@ -12,7 +13,7 @@ root = Tk()
 root.title("Ping Pong")
 root.resizable(0,0)
 root.wm_attributes("-topmost", -1)
-
+# variável
 canvas = Canvas(root, width=800, height=600, bd=0,highlightthickness=0)
 canvas.pack()
 

@@ -22,7 +22,7 @@ root.update()
 # Variável
 count = 0
 lost = False
-
+# classe que controla a bolinha do jogo
 class Bola:
     def __init__(self, canvas, Barra, color):
         self.canvas = canvas
@@ -39,7 +39,7 @@ class Bola:
         self.canvas_height = self.canvas.winfo_height()
         self.canvas_width = self.canvas.winfo_width()
 
-
+    #função
     def draw(self):
         self.canvas.move(self.id, self.x, self.y)
 
@@ -75,7 +75,7 @@ class Bola:
             global lost
             lost = True
 
-
+# classe barra
 class Barra:
     def __init__(self, canvas, color):
         self.canvas = canvas
@@ -88,7 +88,7 @@ class Barra:
 
         self.canvas.bind_all("<KeyPress-Left>", self.move_left)
         self.canvas.bind_all("<KeyPress-Right>", self.move_right)
-
+    # função
     def draw(self):
         self.canvas.move(self.id, self.x, 0)
 
@@ -113,7 +113,7 @@ class Barra:
         if self.pos[2] <= self.canvas_width:
             self.x = 3
 
-
+# função de início do jogo
 def start_game(event):
     global lost, count
     lost = False
@@ -125,18 +125,18 @@ def start_game(event):
     Barra.draw()
     Bola.draw()
 
-
+#função de pontuação
 def score():
     canvas.itemconfig(score_now, text="Pontos: " + str(count))
-
+#função de fim de jogo que aparece quando o jogador perde
 def game_over():
     canvas.itemconfig(game, text="Game over!")
 
-
+# variáveis de barra e bola e sua cores
 Barra = Barra(canvas, "orange")
 Bola = Bola(canvas, Barra, "purple")
 
-
+# variáveis pontuação e jogo
 score_now = canvas.create_text(430, 20, text="Pontos: " + str(count), fill = "green", font=("Arial", 16))
 game = canvas.create_text(400, 300, text=" ", fill="red", font=("Arial", 40))
 
